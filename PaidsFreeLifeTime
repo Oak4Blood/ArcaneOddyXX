@@ -822,6 +822,22 @@ local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidR
 
 end)
 
+local Section = Tab:NewSection("Farm")
+
+Section:NewButton("LostCargo", " ", function()
+
+local LostCargo1 = game:GetService("Workspace").Map.Temporary
+
+for _,v in pairs(LostCargo1:GetDescendants()) do
+if v.Name == "LostCargo" then
+    
+    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(-5,0,0)
+
+
+end
+end
+end)
+
 local Tab = Window:NewTab("Other Scripts")
 local Section = Tab:NewSection("Scripts Hub")
 
