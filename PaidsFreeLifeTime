@@ -1,0 +1,894 @@
+
+local colors = {
+    SchemeColor = Color3.fromRGB(100,233,255),
+    Background = Color3.fromRGB(0, 0, 0),
+    Header = Color3.fromRGB(0, 0, 0),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+
+Speed = 150 --Tween Teleport Speed
+
+local theme = ("Serpent")
+--[[Select Themes
+Themes:
+    LightTheme
+    DarkTheme
+    GrapeTheme
+    BloodTheme
+    Ocean
+    Midnight
+    Sentinel
+    Synapse
+    Serpent
+    ]]--
+
+--Settings
+
+attackspeed = {
+  "0.01",
+  "0.02",
+  "0.05",
+  "0.1",
+  "1"
+}
+
+Speed = {
+  "50",
+  "100",
+  "150",
+  "200",
+  "250"
+}
+
+IslandToTeleport = {
+  "Akursius Keep",
+  "Cirrus Island",
+  "Darkpine Isle",
+  "Dawn Island",
+  "Djin Ruins",
+  "Elm Island",
+  "Fort Talos",
+  "Frostmill Island",
+  "Goso Jungle",
+  "Harvest Island",
+  "Limestone Key",
+  "Mango Isle",
+  "Mount Othrys",
+  "Munera Garden",
+  "Palo Town",
+  "Ravenna",
+  "Redwake",
+  "Sailor's Lodge",
+  "Wind-Row Island",
+  "Whitesummit",
+  "Whispering Caverns",
+  "Thorin's Refuge",
+  "The Southern Jaws",
+  "The Northern Jaws",
+  "The Forest of Cernunno",
+  "Silverhold",
+  "Shell Island"
+}
+
+--Island Center
+local Akursius = game:GetService("Workspace").Map["Akursius Keep"].Center
+Akursius.CFrame = CFrame.new(19228.3711, 1000, 9963.85938, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
+
+local Cirrus = game:GetService("Workspace").Map["Cirrus Island"].Center
+Cirrus.CFrame = CFrame.new(3851.61914, 2300, 4.22225571, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Darkpine = game:GetService("Workspace").Map["Darkpine Isle"].Center
+Darkpine.CFrame = CFrame.new(1702, 1000, 5052.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Dawn = game:GetService("Workspace").Map["Dawn Island"].Center
+Dawn.CFrame = CFrame.new(688.342041, 1000.5, 6366.771, 0.974366367, 0, 0.224967003, 0, 1, 0, -0.224967003, 0, 0.974366367)
+
+local Djin = game:GetService("Workspace").Map["Djin Ruins"].Center
+Djin.CFrame = CFrame.new(7297.9248, 2550, 1143.76599, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Elm = game:GetService("Workspace").Map["Elm Island"].Center
+Elm.CFrame = CFrame.new(-481.40625, 1000, 6471.37891, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
+
+local Fort = game:GetService("Workspace").Map["Fort Talos"].Center
+Fort.CFrame = CFrame.new(10745.4092, 1000.993652, -14.5606689, 0.984812498, 0, 0.173621148, 0, 1, 0, -0.173621148, 0, 0.984812498)
+
+local Frostmill = game:GetService("Workspace").Map["Frostmill Island"].Center
+Frostmill.CFrame = CFrame.new(3017.74878, 1000.000061, 6844.46289, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+
+local Goso = game:GetService("Workspace").Map["Goso Jungle"].Center
+Goso.CFrame = CFrame.new(3040.05859, 1000, 4426.72217, 0.707134247, 0, 0.707079291, 0, 1, 0, -0.707079291, 0, 0.707134247)
+
+local Harvest = game:GetService("Workspace").Map["Harvest Island"].Center
+Harvest.CFrame = CFrame.new(7413.22021, 1000, 793.445557, 0.984812498, 0, 0.173621148, 0, 1, 0, -0.173621148, 0, 0.984812498)
+
+local Limestone = game:GetService("Workspace").Map["Limestone Key"].Center
+Limestone.CFrame = CFrame.new(5611.66992, 1000, 5779.0249, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+
+local Mango = game:GetService("Workspace").Map["Mango Isle"].Center
+Mango.CFrame = CFrame.new(-300.879883, 500, 5530.36133, 0.422592998, -0, -0.906319618, 0, 1, -0, 0.906319618, 0, 0.422592998)
+
+local MountOthrys = game:GetService("Workspace").Map["Mount Othrys"].Center
+MountOthrys.CFrame = CFrame.new(27848.5, 30000.4707, 7698.94287, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local MuneraGarden = game:GetService("Workspace").Map["Munera Garden"].Center
+MuneraGarden.CFrame = CFrame.new(10368.5, 1000.5, 3178.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Palo = game:GetService("Workspace").Map["Palo Town"].Center
+Palo.CFrame = CFrame.new(5166.52832, 1000, 3080.63062, 0.642763317, -0, -0.766064942, 0, 1, -0, 0.766064942, 0, 0.642763317)
+
+local Ravenna = game:GetService("Workspace").Map.Ravenna.Center
+Ravenna.CFrame = CFrame.new(16689.5, 1000, 1517.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Redwake = game:GetService("Workspace").Map.Redwake.Center
+Redwake.CFrame = CFrame.new(331.5, 1000, 3068.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Sailor = game:GetService("Workspace").Map["Sailor's Lodge"].Center
+Sailor.CFrame = CFrame.new(12726.0049, 1000.498871, 2210.00684, 0.965929627, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, 0.965929627)
+
+local WindRow = game:GetService("Workspace").Map["Wind-Row Island"].Center
+WindRow.CFrame = CFrame.new(21876.5, 500, 32.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Whitesummit = game:GetService("Workspace").Map["Whitesummit"].Center
+Whitesummit.CFrame = CFrame.new(4459.67432, 500, -257.271942, 0.996191859, -0, -0.0871884301, 0, 1, -0, 0.0871884301, 0, 0.996191859)
+
+local Whispering = game:GetService("Workspace").Map["Whispering Caverns"].Center
+Whispering.CFrame = CFrame.new(21876.5, 800, 32.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local ThorinRefuge = game:GetService("Workspace").Map["Thorin's Refuge"].Center
+ThorinRefuge.CFrame = CFrame.new(4180.59033, 1000, 9189.14941, 0.766061246, 0, 0.642767608, 0, 1, 0, -0.642767608, 0, 0.766061246)
+
+local TheSouthernJaws = game:GetService("Workspace").Map["The Southern Jaws"].Center
+TheSouthernJaws.CFrame = CFrame.new(1968.49951, 800, 1457.50049, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local NorthernJaws = game:GetService("Workspace").Map["The Northern Jaws"].Center
+NorthernJaws.CFrame = CFrame.new(-1974.50049, 800, 3006.50049, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local ForestofCernunno = game:GetService("Workspace").Map["The Forest of Cernunno"].Center
+ForestofCernunno.CFrame = CFrame.new(9725.04883, 1000, 7131.43213, 0.984812498, 0, 0.173621148, 0, 1, 0, -0.173621148, 0, 0.984812498)
+
+local Silverhold = game:GetService("Workspace").Map["Silverhold"].Center
+Silverhold.CFrame = CFrame.new(7332.94141, 1000, 3834.10571, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
+
+local ShellIsland = game:GetService("Workspace").Map["Shell Island"].Center
+ShellIsland.CFrame = CFrame.new(11913.5, 1500, 11025.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Crimson Hub Project 2", theme)
+local Tab = Window:NewTab("Info")
+local Section = Tab:NewSection("Script By Boss Private Script")
+local Section = Tab:NewSection("Warning!!! Alert!!!")
+local Section = Tab:NewSection("Alternately Boss Farm Is Super High Chance To Get Ban!!")
+local Section = Tab:NewSection("Farm One Boss At a time only")
+
+local Tab = Window:NewTab("Function Settings")
+
+local Section = Tab:NewSection("Kill Aura")
+
+local atkpersec = Section:NewDropdown("Select Aura Damage PerSec", "Click To Select", attackspeed, function(atkpersec)
+   attackspeed = atkpersec
+end)
+
+local Section = Tab:NewSection("Tween Speed")
+
+local tweenspeed = Section:NewDropdown("Select Tween Speed", "Click To Select", Speed, function(TWSpeed)
+   Speed = TWSpeed
+end)
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Damage")
+
+Section:NewToggle("KillAura", " ", function(state)
+
+    if state then
+KillAura = state
+while KillAura == true do
+
+wait(attackspeed)
+pcall(function()
+            for i,v in ipairs(game.Workspace.Enemies:GetChildren()) do 
+                pcall(function()
+                    if v:FindFirstChild("HumanoidRootPart") and not v:FindFirstChild("DeadRagdoll") and game.Players.LocalPlayer:DistanceFromCharacter(v.HumanoidRootPart.Position) <= 20 and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") then 
+                        game:GetService("ReplicatedStorage").RS.Remotes.Combat.DealWeaponDamage:FireServer(0,game.Players.LocalPlayer.Character,v,game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool"),"Slash")
+                    end;
+                end);
+            end;
+            end);
+    end;
+
+  else
+
+        KillAura = state
+
+print('Kill Aura Stopped')
+
+end
+end)
+
+local Section = Tab:NewSection("Teleport/Freeze Bosses")
+
+Section:NewButton("Go to Argos", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["General Argos"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Argos", " ", function(state)
+
+    if state then
+Argos = state
+while Argos == true do
+wait()    
+
+local bossArgos = game:GetService("Workspace").Enemies["General Argos"]
+
+for _,v in pairs(bossArgos:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Argos = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Iris", " ", function()
+
+local boss = game:GetService("Workspace").Enemies.Iris
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Iris", " ", function(state)
+
+    if state then
+Iris = state
+while Iris == true do
+wait()    
+
+local bossIris = game:GetService("Workspace").Enemies.Iris
+
+for _,v in pairs(bossIris:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Iris = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Lord Elius", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["Lord Elius"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Lord Elius", " ", function(state)
+
+    if state then
+Lord = state
+while Lord == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies["Lord Elius"]
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Lord = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Commodore Kai", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["Commodore Kai"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Commodore Kai", " ", function(state)
+
+    if state then
+Commodore = state
+while Commodore == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies["Commodore Kai"]
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Commodore = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Architect Merlot", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["Architect Merlot"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Architect Merlot", " ", function(state)
+
+    if state then
+Architect = state
+while Architect == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies["Architect Merlot"]
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Architect = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Lady Carina", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["Lady Carina"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("Lady Carina", " ", function(state)
+
+    if state then
+Lady = state
+while Lady == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies["Lady Carina"]
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Lady = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to King Calvus", " ", function()
+
+local boss = game:GetService("Workspace").Enemies["King Calvus"]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+Section:NewToggle("King Calvus", " ", function(state)
+
+    if state then
+King = state
+while King == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies["King Calvus"]
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        King = state
+
+print('Stopped')
+
+end
+end)
+
+Section:NewButton("Go to Cernyx", " ", function()
+
+local boss = game:GetService("Workspace").Enemies.Cernyx
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (boss.HumanoidRootPart.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = boss.HumanoidRootPart
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+
+Section:NewToggle("Cernyx", " ", function(state)
+
+    if state then
+Cernyx = state
+while Cernyx == true do
+wait()    
+
+local boss = game:GetService("Workspace").Enemies.Cernyx
+
+for _,v in pairs(boss:GetDescendants()) do
+if v.Name == "HumanoidRootPart" then
+
+    v.Anchored = true
+ 
+
+end
+end
+end
+
+  else
+
+        Cernyx = state
+
+print('Stopped')
+
+end
+end)
+
+local Tab = Window:NewTab("Safty Function")
+
+local Section = Tab:NewSection("Detector")
+
+Section:NewToggle("Kick you when game creator joined", " ", function(state)
+
+    if state then
+Kickyoumod = state
+while Kickyoumod == true do
+    wait()  
+local Group = 3596833   
+    Group = 3596833
+for i,v in ipairs(game.Players:GetChildren()) do
+   if v:IsA("Player") and v:IsInGroup(Group) and v:GetRoleInGroup(3596833) == "🎤 Game Moderator" or v:GetRoleInGroup(3596833) == "📃 Group Manager" or v:GetRoleInGroup(3596833) == "📜 Developer" then 
+                game:GetService("Players").LocalPlayer:Kick(tostring(v).." Joined (Staff)")
+            end;
+        end;
+    end
+  else
+
+        Kickyoumod = state
+
+print('Stopped')
+
+end
+end)
+
+local Tab = Window:NewTab("Fishing Menu")
+
+local Section = Tab:NewSection("Auto Fishing Press Y to enable / Press U to Disable")
+
+Section:NewButton("Auto Fishing (Glitch Sometime)", " ", function()
+
+local players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+isFishing = false
+
+function getFishingRod(backpack)
+    if not (backpack) then
+        chars = players.LocalPlayer.Character:GetChildren()
+    else
+        chars =  players.LocalPlayer.Backpack:GetChildren()
+    end
+    local rod = nil
+    for index,child in pairs(chars) do
+        if( string.match(child.Name,"Rod") == "Rod") then
+            if not ( backpack ) then
+                rodName = child.Name
+            end
+            if backpack and child.Name ~= rodName then continue end
+            rod = child
+            break
+        end
+    end
+    if (rod) then  
+        return rod
+    end
+end
+
+function triggerRod()
+    local rod = getFishingRod()
+    if not (rod) then 
+        return rod 
+    end 
+    local toolEvent = ReplicatedStorage.RS.Remotes.Misc:WaitForChild("ToolAction")
+    toolEvent:FireServer(rod)
+end
+
+function startFishing()
+    if not(isFishing) then
+        triggerRod()
+        isFishing = true
+        return true
+    else
+        return false
+    end
+end
+
+destroy = false
+enable = false
+lastPos = Vector3.new(0,0,0)
+rodName = ""
+UserInputService.InputBegan:Connect(function(input)
+    if(input.KeyCode == Enum.KeyCode.U and destroy==false) then
+        destroy = true
+        print("destroyed")
+    end
+    if(input.KeyCode == Enum.KeyCode.Y) and destroy == false then
+        if not (enable) and getFishingRod() then
+            triggerRod()
+            enable = true
+            isFishing = true
+        end
+    end
+end)
+gotfish = false
+lastGotFish = false
+while wait(0.1) and destroy == false do 
+    if enable then
+        local ply = players.LocalPlayer
+        local pmodel = ply.Character
+        local root = pmodel.HumanoidRootPart
+        spawn(function()
+            local GotFish = pmodel:FindFirstChild("FishBiteGoal")
+            if(GotFish.value)then
+                rodName = getFishingRod().Name
+                triggerRod()
+                gotfish = true
+            end
+        end)
+        if(lastGotFish ~= gotfish and not (gotfish)) then
+            -- unequip then equp the fishing rod 
+            local rod = getFishingRod()
+            rod.Parent = ply.Backpack
+            wait(1)
+            rod.Parent = ply.Character
+            wait(1)
+            isFishing = true
+            triggerRod()
+        end
+        lastGotFish = gotfish
+        if(gotfish)then
+            gotfish = false
+        else
+            startFishing()    
+        end
+        spawn(function()
+            local rod = getFishingRod(true)
+            if(rod)then
+                enable = false
+                isFishing = false
+            end
+        end)    
+        local currentPos = pmodel.HumanoidRootPart.Position
+        if((lastPos - currentPos).magnitude > 1.9) then
+            isFishing = false    
+        end
+        lastPos = currentPos
+    end
+end
+end)
+
+Section:NewButton("Anchore youself when afk fishing", " ", function()
+
+local anc = game.Players.LocalPlayer.Character.LowerTorso
+
+if anc.Anchored == true then
+    anc.Anchored = false
+else
+    anc.Anchored = true
+    end
+
+end)
+
+Section:NewButton("Anti Afk", " ", function()
+	local vu = game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:connect(function()
+		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		wait(1)
+		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		print("Anti Afk Enable")
+	end);
+end)
+
+local Tab = Window:NewTab("Teleport(Tween Service)")
+
+local Section = Tab:NewSection("Boats")
+
+Section:NewButton("Go to Your Boat", " ", function()
+
+local ply = game.Players.LocalPlayer.Character
+local boatown = game:GetService("Workspace").Boats
+
+for i,v in pairs(boatown:GetDescendants()) do
+if v.Name == "Owner" then
+    
+local ownerboat = v.Value
+local ply = game.Players.LocalPlayer.Character
+if ownerboat == ply then
+local ownerofboat = tostring(v.Parent)
+local f = Workspace.Boats[ownerofboat].Sail.Position
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (f - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = game:GetService("Workspace").Boats[ownerofboat].Sail
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end
+end
+end
+end)
+
+local Section = Tab:NewSection("Islands Teleport")
+
+local IslandsTp = Section:NewDropdown("Select Island", "Click To Select", IslandToTeleport, function(IslandTw)
+   IslandToTeleport = IslandTw
+end)
+
+Section:NewButton("Go to Select Island", " ", function()
+    
+local iisland = game:GetService("Workspace").Map[IslandToTeleport]
+
+function GetTime(Distance, Speed)
+	local Time = Distance / Speed
+	return Time
+end
+
+local NewPoint = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Distance = (iisland.Center.Position - NewPoint.Position).magnitude
+local Time = GetTime(Distance, Speed)
+local ponts = iisland.Center
+    
+local TweenService = game:GetService("TweenService")
+local TweenGo = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0), 
+{CFrame = CFrame.new(ponts.Position)}):Play()
+
+end)
+
+local Tab = Window:NewTab("Other Scripts")
+local Section = Tab:NewSection("Scripts Hub")
+
+Section:NewButton("Infinite Yield", " ", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+Section:NewButton("Unknow Local", " ", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/unknxwnlocal/localshitscripts/main/shitterarcane"))()
+end)
+
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Misc")
+
+Section:NewButton("Rejoin", "Rejoin Server", function()
+
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local Rejoin = coroutine.create(function()
+    local Success, ErrorMessage = pcall(function()
+        TeleportService:Teleport(game.PlaceId, LocalPlayer)
+    end)
+
+    if ErrorMessage and not Success then
+        warn(ErrorMessage)
+    end
+end)
+
+coroutine.resume(Rejoin)  
+
+end)
+
+Section:NewButton("Hop Server", "Hop to low server", function()
+
+    wait ()
+local Servers = game.HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/3237168/servers/Public?sortOrder=Asc&limit=100"))
+for i,v in pairs(Servers.data) do
+  if v.playing ~= v.maxPlayers then
+      game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, v.id)
+  end
+end
+end)
+
+Section:NewButton("Alt Del", "Delete!!!!", function()
+local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse()
+
+Mouse.Button1Down:connect(function()
+if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftAlt) then return end
+if not Mouse.Target then return end
+Mouse.Target:Destroy()
+end)
+end)
+
+Section:NewKeybind(" ", " ", Enum.KeyCode.RightShift, function()
+	Library:ToggleUI()
+end)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "Boss";
+Text = [[มีแค่พวกกากที่ใช้โปร
+    555555555]];
+})
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "Boss";
+Text = [[หน้าหีบอสไม่ได้กล่าว]];
+})
