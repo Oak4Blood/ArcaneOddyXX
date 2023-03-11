@@ -76,7 +76,7 @@ local Akursius = game:GetService("Workspace").Map["Akursius Keep"].Center
 Akursius.CFrame = CFrame.new(19228.3711, 1000, 9963.85938, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247)
 
 local Cirrus = game:GetService("Workspace").Map["Cirrus Island"].Center
-Cirrus.CFrame = CFrame.new(3851.61914, 2300, 4.22225571, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Cirrus.CFrame = CFrame.new(3851.61914, 2450, 4.22225571, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 local Darkpine = game:GetService("Workspace").Map["Darkpine Isle"].Center
 Darkpine.CFrame = CFrame.new(1702, 1000, 5052.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
